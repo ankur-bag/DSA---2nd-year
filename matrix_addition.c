@@ -1,6 +1,6 @@
 //Assignment 2: Implement functionalities for matrix addition, matrix multiplication, and sparse matrix representation.
 #include <stdio.h>
-
+#include <stdlib.h>
 int main ()
 {
     int n,m;
