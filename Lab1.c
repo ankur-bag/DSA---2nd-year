@@ -1,3 +1,5 @@
+//Assignment 1: Implement the Factorial of a number, the GCD of two numbers, and the Tower of Hanoi problem using recursion.
+
 #include <stdio.h>
 
 int fact(int n) {
