@@ -5,9 +5,9 @@ int main()
     int n;
     scanf("%d", &n);
     int arr[n];
+    printf("enter the elemnts \n");
 
     // taking elements from user
-
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
@@ -18,7 +18,7 @@ int main()
     for (int i = 0; i < n; i++)
     {
         int current = arr[i];
-        int j = i + 1;
+        int j = i - 1;
         while (j >= 0 && arr[j] > current)
         {
             arr[j + 1] = arr[j];
@@ -26,6 +26,7 @@ int main()
         }
         arr[j + 1] = current;
     }
+
     for (int i = 0; i < n; i++)
     {
         printf("sorted array :  %d \n", arr[i]);
