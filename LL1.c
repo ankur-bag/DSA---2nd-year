@@ -74,7 +74,7 @@ void insertAtEnd()
         }
         temp->next = newNode;
     }
-    printf("Insertion at end sucsexful")
+    printf("Insertion at end sucsexful");
     
 }
 void deleteAtBeg()
