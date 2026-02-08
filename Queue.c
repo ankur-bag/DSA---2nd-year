@@ -45,7 +45,7 @@ void dequeue()
         front = front + 1;
         printf("Dequeued element: %d\n", queue[front]);
     }
-    printf("Dequed");
+    printf("Dequed \n");
 }
 
 void display()
@@ -58,26 +58,26 @@ void display()
 
     for (int i = front; i <= rear; i++)
     {
-        printf("Queue: %d | ", queue[i]);
+        printf("%d | ", queue[i]);
     }
 }
 
 int main()
 {
-    int k = 1;
-    while (k != 0)
+    
+    do 
     {
         printf("1.Enqueue \n");
         printf("2.Dequeue \n");
-        printf("3.Exit");
+        printf("3.Exit \n");
         int n, ch;
-        printf("Enter your choice \n");
+        printf("Enter your choice: ");
         scanf("%d", &ch);
 
         switch (ch)
         {
         case 1:
-            printf("enter the value \n");
+            printf("enter the value: ");
             scanf("%d", &n);
             enqueue(n);
             display();
@@ -94,5 +94,6 @@ int main()
         default:
             printf("Invalid choice");
         }
-    }
+         printf(" \n");
+    }while(1);
 }
