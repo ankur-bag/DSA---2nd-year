@@ -3,113 +3,121 @@
 
 #define SIZE 5
 
-int pq[SIZE];   // this is the line where numbers stand
-int rear = -1;  // -1 means line is empty
+int pq[SIZE];   // line where numbers stand
+int rear = -1;  // -1 means empty queue
 
-// INSERT BASED ON PRIORITY
+// INSERT WITH PRIORITY
 void enqueue(int value)
 {
-    // check if line is already full
-    if (rear == SIZE - 1)
+    // check if queue is full
+    if(rear == SIZE-1)
     {
-        printf("Priority Queue Overflow\n");
+        printf("Queue Overflow\n");
         return;
     }
 
     int i;
 
-    // start from end of line and check:
-    // "is the new number bigger than existing ones?"
-    // if yes → push smaller numbers one step right
-    for (i = rear; i >= 0 && pq[i] < value; i--)
+    // start checking from end of queue
+    for(i = rear; i >= 0; i--)
     {
-        pq[i + 1] = pq[i];   // shift smaller person right
+        // if existing number is smaller
+        if(pq[i] < value)
+        {
+            pq[i+1] = pq[i];   // move smaller number right
+        }
+        else
+        {
+            break;   // stop when bigger element found
+        }
     }
 
-    // now insert new number in correct spot
-    pq[i + 1] = value;
+    // insert new number at correct position
+    pq[i+1] = value;
 
-    // increase line length
+    // increase queue size
     rear++;
 
-    printf("Inserted successfully with priority\n");
+    printf("Inserted successfully\n");
 }
 
-// REMOVE HIGHEST PRIORITY (FIRST ELEMENT)
+
+// REMOVE HIGHEST PRIORITY
 void dequeue()
 {
-    // check if line is empty
-    if (rear == -1)
+    if(rear == -1)
     {
-        printf("Priority Queue Underflow\n");
+        printf("Queue Underflow\n");
         return;
     }
 
-    // first element always has highest priority
+    // first element always highest priority
     printf("Removed element: %d\n", pq[0]);
 
-    // after removing, everyone moves one step forward
-    for (int i = 0; i < rear; i++)
+    // shift all elements left
+    for(int i=0; i<rear; i++)
     {
-        pq[i] = pq[i + 1];
+        pq[i] = pq[i+1];
     }
 
-    // reduce size of line
     rear--;
 }
 
-// SHOW ALL ELEMENTS
+
+// DISPLAY QUEUE
 void display()
 {
-    if (rear == -1)
+    if(rear == -1)
     {
-        printf("Priority Queue Empty\n");
+        printf("Queue Empty\n");
         return;
     }
 
     printf("Queue: ");
-    for (int i = 0; i <= rear; i++)
+    for(int i=0; i<=rear; i++)
     {
         printf("%d | ", pq[i]);
     }
     printf("\n");
 }
 
+
+// MAIN MENU
 int main()
 {
     int ch, value;
 
-    while (1)
+    while(1)
     {
-        printf("\n1. Enqueue (Insert with Priority)\n");
-        printf("2. Dequeue (Remove Highest Priority)\n");
+        printf("\n1. Enqueue\n");
+        printf("2. Dequeue\n");
         printf("3. Display\n");
         printf("4. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d", &ch);
 
-        switch (ch)
+        switch(ch)
         {
-        case 1:
-            printf("Enter value: ");
-            scanf("%d", &value);
-            enqueue(value);
-            break;
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
 
-        case 2:
-            dequeue();
-            break;
+            case 2:
+                dequeue();
+                break;
 
-        case 3:
-            display();
-            break;
+            case 3:
+                display();
+                break;
 
-        case 4:
-            exit(0);
+            case 4:
+                exit(0);
 
-        default:
-            printf("Invalid choice\n");
+            default:
+                printf("Invalid choice\n");
         }
     }
 
