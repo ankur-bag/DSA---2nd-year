@@ -96,4 +96,4 @@ int main()
         }
          printf(" \n");
     }while(1);
-}
+} 
